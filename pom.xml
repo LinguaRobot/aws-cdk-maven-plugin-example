@@ -23,13 +23,29 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <groupId>io.linguarobot</groupId>
+                <artifactId>aws-cdk-maven-plugin</artifactId>
+                <version>0.0.1</version>
+                <executions>
+                    <execution>
+                        <id>deploy</id>
+                        <goals>
+                            <goal>synth</goal>
+                            <goal>bootstrap</goal>
+                            <goal>deploy</goal>
+                        </goals>
+                        <configuration>
+                            <app>com.myorg.ExampleApp</app>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.myorg.ExampleApp</mainClass>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
